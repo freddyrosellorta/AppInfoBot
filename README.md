@@ -36,3 +36,17 @@ $ pecl install redis
 >```
 >
 >> 3. Send /start to your bot and enjoy!
+
+# About
+
+[Mohammad Mahdi](https://github.com/MohamamdArak)
+
+See our translate bot in telegram :
+
+[Translaty](https://telegram.me/TranslatyBot)
+
+#
+
+Have any idea? Ask me about that in telegram :
+
+[Mohammad Mahdi](https://telegram.me/MohamamdArak)
