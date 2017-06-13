@@ -25,7 +25,7 @@ $ pecl install redis
 >
 > [https://api.telegram.org/bot<TOKEN>/setWebHook?url=https://your_site.ir/AppInfoBot/main.php](https://api.telegram.org/bot<TOKEN>/setWebHook?url=https://your_site.ir/AppInfoBot/main.php)
 > 
->> 2. Set token and admin id:
+>> 2. Edit config file:
 >
 > Open [data/config.php](https://github.com/CruelTm/AppInfoBot/blob/master/data/config.php) and set bot token, your id, redis host and port. Example:
 >```php
