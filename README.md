@@ -41,9 +41,9 @@ $ pecl install redis
 
 [Mohammad Mahdi](https://github.com/MohamamdArak)
 
-See our translate bot in telegram :
+See this bot in telegram :
 
-[Translaty](https://telegram.me/TranslatyBot)
+[App Info Bot](https://telegram.me/AppFinderBot)
 
 #
 
