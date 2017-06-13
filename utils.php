@@ -11,6 +11,18 @@ function is_admin($msg){
     }
 }
 
+function collect_stats($msg){
+    global $redis;
+    if($msg){
+        if($msg['from']['id']){
+            $redis->sadd(BOT_NAME . ':BotUsers', $msg['from']['id']);
+        }
+        if($msg['text'] == '/start'){
+            $redis->incr(BOT_NAME . ':StartNums');
+        }
+    }
+}
+
 function save_log($data){
     if(!$data){
         return false;
