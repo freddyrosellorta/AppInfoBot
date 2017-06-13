@@ -10,6 +10,7 @@ Telegram [App Finder Bot](https://telegram.me/AppInfoBot) Source Code
 # Setup Packages:
 ```bash
 # Tested On Centos 6,7
+
 $ yum update
 $ yum upgrade
 $ yum intall pecl
