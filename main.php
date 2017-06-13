@@ -21,8 +21,7 @@ function message_processor($msg, $matches) {
 		        $members_count = count($members);
 	    	    $starts = $redis->get(BOT_NAME . ':StartNums');
 	    	    $blocked = $redis->get(BOT_NAME . ':BlockedUsers');
-	    	    $emails = $redis->get(BOT_NAME . ":SendedEmails");
-       		    sendMessage($msg['chat']['id'], "#Stats\n*Members :* `" . ($members_count ? $members_count : '0') . "`\n*Sent Emails :* `" . ($emails ? $emails : '0') . "`\n*Blocked Users :* `" . ($blocked ? $blocked : '0') . "`\n*Starts :* `". ($starts ? $starts : '0') ."`", 'Markdown');
+       		    sendMessage($msg['chat']['id'], "#Stats\n*Members :* `" . ($members_count ? $members_count : '0') . "`\n*Blocked Users :* `" . ($blocked ? $blocked : '0') . "`\n*Starts :* `". ($starts ? $starts : '0') ."`", 'Markdown');
 	        }elseif($matches[0] == '/fwd' && $msg['reply_to_message']){
 	    	    $members = $redis->smembers(BOT_NAME . ':BotUsers');
 	            for($i=0; ; ){
