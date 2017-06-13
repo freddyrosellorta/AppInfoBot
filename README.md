@@ -16,7 +16,7 @@ $ pecl install redis
 # How To Use?
 >> 1. Set Webhook:
 >
-> •Use this url to set webhook :
+> Use this url to set webhook :
 >
 > [https://api.telegram.org/bot<TOKEN>/setWebHook?url=https://your_site.ir/AppInfoBot/main.php](https://api.telegram.org/bot<TOKEN>/setWebHook?url=https://your_site.ir/AppInfoBot/main.php)
 > 
