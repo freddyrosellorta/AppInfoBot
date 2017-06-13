@@ -10,6 +10,10 @@ Telegram App Finder Bot Source Code
 # Setup Packages:
 ```bash
 # Tested On Centos 6,7
+$ yum update
+$ yum upgrade
+$ yum intall pecl
+$ yum install redis
 $ pecl install redis
 ```
 
