@@ -28,10 +28,10 @@ $ pecl install redis
 >
 > Open [data/config.php](https://github.com/CruelTm/AppInfoBot/blob/master/data/config.php) and set bot token, your id, redis host and port. Example:
 >```php
-define(BOT_TOKEN, '352752169:BBESuA68DpesrHoV4WCxmXPi3TkqjQgoe49');
-define(ADMIN_ID, 179071599);
-define(REDIS_HOST, '127.0.0.1');
-define(REDIS_PORT, '6379');
-```
+>define(BOT_TOKEN, '352752169:BBESuA68DpesrHoV4WCxmXPi3TkqjQgoe49');
+>define(ADMIN_ID, 179071599);
+>define(REDIS_HOST, '127.0.0.1');
+>define(REDIS_PORT, '6379');
+>```
 >
 >> 3. Send /start to your bot and enjoy!
