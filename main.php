@@ -7,32 +7,34 @@ require_once 'methods.php';
 function message_processor($msg, $matches) {
     // Process Incoming Messages
     global $redis;
-    if(is_admin($msg)){
-	    if($matches[0] == '/leave'){
-	        leaveChat($msg['chat']['id']);
-        }elseif($matches[0] == '/id'){
-	        sendReply($msg, "Chat Id : ". $msg['chat']['id'] . "\nUser Id : " . $msg['from']['id'], 'Markdown');
-	    }elseif($matches[0] == '/stats'){
-		    $members = $redis->smembers(BOT_NAME . ':BotUsers');
-		    $members_count = count($members);
-	    	$starts = $redis->get(BOT_NAME . ':StartNums');
-	    	$blocked = $redis->get(BOT_NAME . ':BlockedUsers');
-	    	$emails = $redis->get(BOT_NAME . ":SendedEmails");
-            sendMessage($msg['chat']['id'], "#Stats\n*Members :* `" . ($members_count ? $members_count : '0') . "`\n*Sent Emails :* `" . ($emails ? $emails : '0') . "`\n*Blocked Users :* `" . ($blocked ? $blocked : '0') . "`\n*Starts :* `". ($starts ? $starts : '0') ."`", 'Markdown');
-	    }elseif($matches[0] == '/fwd' && $msg['reply_to_message']){
-	    	$members = $redis->smembers(BOT_NAME . ':BotUsers');
-	        for($i=0; ; ){
-	    	    if($i == count($members)){
-	    	        break;
-	    	    }
-	            forwardMessage($members[$i], $msg['chat']['id'], $msg['reply_to_message']['message_id']);
-		        $i++;
-	        }
-            sendMessage($msg['chat']['id'], '*Message Forwarded For All Users!*', 'Markdown');
-	    }
-    }
     if($matches[0] == '/start'){
+	collect_stats($msg);
         sendMessage($msg['chat']['id'], "لطفا نام برنامه مورد نظر را ارسال کنید :", "Markdown");
+    }elseif($matches[0] == '/stats' || $matches[0] == '/fwd'){
+        if(is_admin($msg)){
+	        if($matches[0] == '/leave'){
+	            leaveChat($msg['chat']['id']);
+            }elseif($matches[0] == '/id'){
+	            sendReply($msg, "Chat Id : ". $msg['chat']['id'] . "\nUser Id : " . $msg['from']['id'], 'Markdown');
+	        }elseif($matches[0] == '/stats'){
+		        $members = $redis->smembers(BOT_NAME . ':BotUsers');
+		        $members_count = count($members);
+	    	    $starts = $redis->get(BOT_NAME . ':StartNums');
+	    	    $blocked = $redis->get(BOT_NAME . ':BlockedUsers');
+	    	    $emails = $redis->get(BOT_NAME . ":SendedEmails");
+       		    sendMessage($msg['chat']['id'], "#Stats\n*Members :* `" . ($members_count ? $members_count : '0') . "`\n*Sent Emails :* `" . ($emails ? $emails : '0') . "`\n*Blocked Users :* `" . ($blocked ? $blocked : '0') . "`\n*Starts :* `". ($starts ? $starts : '0') ."`", 'Markdown');
+	        }elseif($matches[0] == '/fwd' && $msg['reply_to_message']){
+	    	    $members = $redis->smembers(BOT_NAME . ':BotUsers');
+	            for($i=0; ; ){
+	    	        if($i == count($members)){
+	    	            break;
+	    	        }
+	                forwardMessage($members[$i], $msg['chat']['id'], $msg['reply_to_message']['message_id']);
+		            $i++;
+	            }
+                sendMessage($msg['chat']['id'], '*Message Forwarded For All Users!*', 'Markdown');
+	        }
+        }
     }elseif($matches){
         $url = 'https://elhost.online/CafeBazaar/api/v1/search.php?app=' . urlencode($msg['text']);
         $req = file_get_contents($url);
