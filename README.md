@@ -1,5 +1,5 @@
 # AppInfoBot
-Telegram App Finder Bot Source Code
+Telegram [App Finder Bot](https://telegram.me/AppInfoBot) Source Code
 
 # Requirements: 
 - `php`
